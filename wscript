@@ -5,9 +5,9 @@ from os.path import abspath, exists
 from shutil import copy, rmtree
 
 def all(all):
-    os.system('node-waf clean')
-    os.system('node-waf configure')
-    os.system('node-waf')
+    os.system('node-gyp clean')
+    os.system('node-gyp configure')
+    os.system('node-gyp')
 
 def clean(cln):
   if exists('build'): rmtree('build')
@@ -34,6 +34,6 @@ def build(conf):
     t.source = [
         'src/node_sigar.cc'
     ]
-    #t.cxxflags = ['-g', '-D_FILE_OFFSET_BITS=64', '-D_LARGEFILE_SOURCE', '-Wall'] 
+    #t.cxxflags = ['-g', '-D_FILE_OFFSET_BITS=64', '-D_LARGEFILE_SOURCE', '-Wall']
     t.target = 'sigar'
     t.uselib = 'SIGAR'
