@@ -9,7 +9,7 @@
         "<(module_root_dir)/build/sigar/src/.libs/libsigar.a"
       ],
       "include_dirs": [
-        'deps/sigar/include'
+        'build/sigar/include'
       ],
       'conditions': [
         ['OS=="mac"', {
