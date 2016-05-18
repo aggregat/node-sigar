@@ -13,9 +13,6 @@
         "email": "open@adaltas.com",
         "url": "https://github.com/wdavidw/node-sigar.git"
     },
-    "dependencies": {
-        "sigar": "hyperic/sigar#91aead2"
-    },
     "devDependencies": {
         "coffee-script": "latest",
         "printf": "latest",
@@ -30,8 +27,8 @@
     "gypfile": true,
     "engines": { "node": ">= 0.6.0" },
     "scripts": {
-        "cmakenotworking": "mkdir -p build/sigar && cp -rp ../node_modules/sigar/* build/sigar/ && cd build/sigar && cmake -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=false . && cmake --build . && node-gyp configure && node-gyp build",
-        "preinstall": "mkdir -p build/sigar && cp -rp ../node_modules/sigar/* build/sigar/ && cd build/sigar && ./autogen.sh && ./configure --prefix=`pwd`/build/sigar --with-pic && make && make install && cd ../.. && node-gyp configure && node-gyp build",
+        "cmakenotworking": "mkdir build && cd build && git clone https://github.com/hyperic/sigar.git && cd sigar && git checkout 91aead2fd3c40ad95706dd65be013f5861645c21 && cmake -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=false . && cmake --build . && node-gyp configure && node-gyp build",
+        "preinstall": "mkdir build && cd build && git clone https://github.com/hyperic/sigar.git && cd sigar && git checkout 91aead2fd3c40ad95706dd65be013f5861645c21 && ./autogen.sh && ./configure --prefix=`pwd`/build/sigar --with-pic && make && make install && cd ../.. && node-gyp configure && node-gyp build",
         "test": "mocha"
     }
 }
